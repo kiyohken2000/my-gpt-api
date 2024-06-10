@@ -5,11 +5,11 @@ def mygpt():
     print('関数の開始')
     
     # 受信したテキストを代入
-    recieved_image_url = 'https://i.ibb.co/BzgTgQJ/9b823cbe9748.jpg'
+    recieved_image_url = 'https://i.ibb.co/Kct0fWG/f2c78bc02587.jpg'
     print('受信したURL', recieved_image_url)
 
     # 解析の開始
-    client = Client("hysts/DeepDanbooru")
+    client = Client("votepurchase/DeepDanbooru")
     result = client.predict(
       recieved_image_url,
       0.5,
