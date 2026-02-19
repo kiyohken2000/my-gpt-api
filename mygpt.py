@@ -1,7 +1,8 @@
 import os
 from flask import Flask, request
 from flask_cors import CORS
-from gradio_client import Client
+from gradio_client import Client, handle_file
+from config import HF_TOKEN
 
 app = Flask(__name__)
 CORS(app)
@@ -17,10 +18,13 @@ def main():
     print('受信したURL', recieved_image_url)
 
     # 解析の開始
-    client = Client("votepurchase/DeepDanbooru")
+    client = Client(
+      "votepurchase/DeepDanbooru",
+      token=HF_TOKEN
+    )
     result = client.predict(
-      recieved_image_url,	# filepath  in 'Input' Image component
-      0.5,	# float (numeric value between 0 and 1) in 'Score threshold' Slider component
+      image=handle_file(recieved_image_url),
+      score_threshold=0.5,
       api_name="/predict"
     )
     print(result[-1])

@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.13
 
 ENV APP_HOME /mygpt-api
 WORKDIR $APP_HOME
